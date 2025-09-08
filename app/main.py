@@ -8,10 +8,10 @@ class Person:
         Person.people[self.name] = self
 
 
-def create_person_list(people_list: list) -> list:
+def create_person_list(people_list: list[dict]) -> list[Person]:
     Person.people.clear()
 
-    _ = [
+    created_people = [
         Person(
             person_dict["name"],
             person_dict["age"]
@@ -27,5 +27,4 @@ def create_person_list(people_list: list) -> list:
         if person_dict.get("husband"):
             person_obj.husband = Person.people[person_dict["husband"]]
             Person.people[person_dict["husband"]].wife = person_obj
-
-    return [Person.people[person_dict["name"]] for person_dict in people_list]
+    return created_people
